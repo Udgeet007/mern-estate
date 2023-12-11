@@ -17,9 +17,10 @@ export default function Listing() {
   const [copied, setCopied] = useState(false);
   const [contact, setContact] = useState(false);
   const params = useParams();
-  const { currentUser } = useSelector((state) => state.user);
+  const  {currentUser}  = useSelector((state) => state.user);
 
 
+  // console.log(currentUser._id, listing?.userRef);
   useEffect(()=>{
     const fetchListing = async () => {
       try{
@@ -130,14 +131,14 @@ export default function Listing() {
             </li>
           </ul>
           {currentUser && listing.userRef !== currentUser._id && !contact && (
-            <button
-              onClick={() => setContact(true)}
-              className='bg-slate-700 text-white rounded-lg uppercase hover:opacity-95 p-3'
-            >
-              Contact landlord
-            </button>
-          )}
-          {contact && <Contact listing={listing} />}
+              <button
+                onClick={() => setContact(true)}
+                className='bg-slate-700 text-white rounded-lg uppercase hover:opacity-95 p-3'
+              >
+                Contact landlord
+              </button>
+            )}
+            {contact && <Contact listing={listing} />}
         </div>
       </div>
     )}
